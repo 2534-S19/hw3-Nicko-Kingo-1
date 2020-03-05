@@ -1,8 +1,8 @@
 /*
  * myGPIO.h
  *
- *  Created on:
- *      Author:
+ *  Created on: 3/5/2020
+ *      Author: Nick King
  *
  */
 
@@ -49,6 +49,7 @@ void turnOn_BoosterpackLEDBlue();
 void turnOff_BoosterpackLEDBlue();
 
 // TODO: Define any constants that are local to myGPIO.c using #define
+//Macros I have defined to make the initial function calls easier
 #define LPBUTTON1           BIT1
 #define LPBUTTON2           BIT4
 #define BPBUTTON1           BIT1

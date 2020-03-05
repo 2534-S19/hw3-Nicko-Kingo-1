@@ -39,7 +39,7 @@ int main(void)
         if(timer0Expired())
         {
             count0++;
-            if(count0 >=8) count0 = 0;
+            if(count0 >=8) count0 = 0; //resets the LED2 counter
         }
 
 
@@ -47,7 +47,7 @@ int main(void)
         // YOU MUST WRITE timer1expired IN myTimer.c
         if(timer1Expired())
         {
-            buttonhistory <<= 1;
+            buttonhistory <<= 1; //moves the button information to the left
             buttonhistory |= (checkStatus_BoosterpackS1());
         }
 
@@ -59,7 +59,9 @@ int main(void)
         if(debounce)
         {
             count1++;
-            if(count1 >=8) count1 = 0;
+            if(count1 >=8) count1 = 0; //resets the LED count
+            while(!checkStatus_BoosterpackS1()); //Makes sure that the color doesn't change as I hold down the button
+            buttonhistory = 0xFF; //resets the buttonhistory value
         }
     }
 }
@@ -177,6 +179,9 @@ void changeBoosterpackLED(unsigned int count)
 // The button state machine should return true or false to indicate a completed, debounced button press.
 bool fsmBoosterpackButtonS1(unsigned char buttonhistory)
 {
+    //Note, my Boosterpack LED functions similarly to the golden solution,
+    //though the led changes on the pull up of the button instead of the push down.
+
     if(buttonhistory == 0x00)
         return true;
     return false;

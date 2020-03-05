@@ -1,8 +1,8 @@
 /*
  * GPIO.c
  *
- *  Created on:
- *      Author:
+ *  Created on: 3/5/2020
+ *      Author: Nick King
  */
 
 // For the code you place here, you may use your code that uses register references.
@@ -15,6 +15,7 @@
 // Even though this assignment does not use all of the pushbuttons, you should write one function that does a complete GPIO init.
 void initGPIO()
 {
+    //initalizes all of the GPIO peripherals
     GPIO_setAsInputPinWithPullDownResistor (PORT1, LPBUTTON1);
 
     GPIO_setAsInputPinWithPullDownResistor (PORT1, LPBUTTON2);
@@ -37,6 +38,7 @@ void initGPIO()
 
     GPIO_setAsOutputPin (PORT5, BLEDB);
 
+    //makes sure that all outputs are off
     turnOff_LaunchpadLED1();
     turnOff_LaunchpadLED2Red();
     turnOff_LaunchpadLED2Green();
